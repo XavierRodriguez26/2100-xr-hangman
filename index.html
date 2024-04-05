@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Game</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file for styling -->
+</head>
+<body>
+    <div class="container">
+        <h1>Hangman Game</h1>
+        <div id="word-container">
+            <!-- This is where the word to be guessed will be displayed -->
+        </div>
+        <div id="guesses-left">
+            <!-- Display the number of guesses left -->
+        </div>
+        <div id="letters-guessed">
+            <!-- Display the letters already guessed by the player -->
+        </div>
+        <div id="message">
+            <!-- Display messages to the player (examples: "You win!", "Try again!", etc.) -->
+        </div>
+        <div id="input-container">
+            <input type="text" id="guess-input" placeholder="Enter your guess">
+            <button id="guess-button">Guess</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script> 
+</body>
+</html>

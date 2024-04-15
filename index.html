@@ -6,30 +6,28 @@
     <title>Hangman Game</title>
     <link rel="stylesheet" href="styles.css"> 
 </head>
+
 <body>
     <div class="container">
-        <h1>Hangman Game</h1>
-        <div id="hangman">
-            <img src="images/hangman-0.svg" alt="step1">
+       <div id="options-container">
+            <!-- This container will hold the "options" aka the wordlist for the game -->
+       </div>
+       <div id="letter-container" class="letter-container hide">
+            <!-- Container that will hold an array of all the letters in the alphabet -->
         </div>
-        <div id="word-container">
-            <!-- This is where the word to be guessed will be displayed -->
-        </div>
-        <div id="guesses-left">
-            <!-- Display the number of guesses left -->
-        </div>
-        <div id="letters-guessed">
-            <!-- Display the letters already guessed by the player -->
-        </div>
-        <div id="message">
-            <!-- Display messages to the player (examples: "You win!", "Try again!", etc.) -->
-        </div>
-        <div id="input-container">
-            <input type="text" id="guess-input" placeholder="Enter your guess">
-            <button id="guess-button">Guess</button>
-        </div>
+        <div id="user-input-section">
+            <!-- This container will hold the code for the user input portion of the game-->
+       </div>
+       <canvas id="canvas"></canvas> <!-- HTML element to coincide wit JS to draw elements, this container is only for images-->
+       
+       <div id="new-game" class="new-game hide">  <!-- This div is creating the option to start a new game -->
+            <div id="results"></div>
+            <button id="new-game-button">New Game</button>
+       </div>
     </div>
     
-    <script src="script.js"></script> 
-</body>
+    
+        <script src="script.js"></script> 
+    </body>
+
 </html>

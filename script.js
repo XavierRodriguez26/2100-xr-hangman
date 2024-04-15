@@ -1,20 +1,32 @@
-// Array of words for the game
-let words = ["hangman", "javascript", "computer", "programming", "internet"];
+// Initializing all the variables we created in the HTML 
 
-// Variable to store the chosen word
-let chosenWord = "";
+const WordContainer = document.getelemenybyid('letter-container');
+const OptionsContainer = document.getelemenybyid('options-container');
+const UserInput = document.getelemenybyid('user-input');
+const NewCame = document.getelemenybyid('new-game');
+const GameButton = document.getelemenybyid('new-game-button');
+const Canvas = document.getelemenybyid('letter-container');
+const ResultText = document.getelemenybyid('letter-container');
 
-// Function to choose a random word from the array
-function chooseWord() {
-    return words[Math.floor(Math.random() * words.length)];
-}
+// Option Values - Values will randomly be chosen when New Game button is clicked
 
+let options = {
+    CarBrand: [
+        "Toyota",
+        "Honda",
+        "Hyundai",
+        "Ford",
+        "Chevrolet",
+        "Jeep",
+        "Dodge",
+    ],
 
-// Initialize the game
-function init() {
-    const word = chooseWord();
-    console.log("Word to guess:", chosenWord); // For testing purposes, you can remove this line later
-}
-
-// Call the init function when the page loads
-window.onload = init;
+    Colors: [
+        "red",
+        "blue",
+        "green",
+        "yellow",
+        "orange",
+        "purple"
+    ],
+};

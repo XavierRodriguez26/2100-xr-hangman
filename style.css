@@ -20,16 +20,16 @@
     border-radius: 0.6em;
     box-shadow: 0 1.2em 2.4em rgba(111, 85, 0, 0.25);
   }
-  #OptionsContainer {
+  #options-container {
     text-align: center;
   }
-  #OptionsContainer div {
+  #options-container div {
     width: 100%;
     display: flex;
     justify-content: space-between;
     margin: 1.2em 0 2.4em 0;
   }
-  #OptionsContainer button {
+  #options-container button {
     padding: 0.6em 1.2em;
     border: 3px solid #000000;
     background-color: #ffffff;
@@ -38,24 +38,24 @@
     text-transform: capitalize;
     cursor: pointer;
   }
-  #optionscontainer button:disabled {
+  #options-container button:disabled {
     border: 3px solid #808080;
     color: #808080;
     background-color: #efefef;
   }
-  #optionscontainer button.active {
+  #options-container button.active {
     background-color: navy;
     border: 3px solid #000000;
     color: #fff;
   }
-  .lettercontainer {
+  .letter-container {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.6em;
   }
-  #lettercontainer button {
+  #letter-container button {
     height: 2.4em;
     width: 2.4em;
     border-radius: 0.3em;
@@ -76,7 +76,7 @@
     border-radius: 0.6em;
   }
   
-  #userinput {
+  #user-input-section {
     display: flex;
     justify-content: center;
     font-size: 1.8em;
@@ -102,10 +102,10 @@
   #results span {
     font-weight: 600;
   }
-  #newgamebutton {
+  #new-game-button {
     font-size: 1.25em;
     padding: 0.5em 1em;
-    background-color: white;
+    background-color: navy;
     border: 3px solid #000000;
     color: #fff;
     border-radius: 0.2em;

@@ -1,10 +1,10 @@
 // Initializing all the variables we created in the HTML 
 
-const WordContainer = document.getElementById('lettercontainer');
-const OptionsContainer = document.getElementById('optionscontainer');
-const UserInput = document.getElementById('userinput');
-const NewCame = document.getElementById('newgame');
-const GameButton = document.getElementById('newgamebutton');
+const WordContainer = document.getElementById('letter-container');
+const OptionsContainer = document.getElementById('options-container');
+const UserInput = document.getElementById('user-input-section');
+const NewGame = document.getElementById('new-game-container');
+const GameButton = document.getElementById('new-game-button');
 const Canvas = document.getElementById('canvas');
 const ResultText = document.getElementById('results');
 
@@ -12,23 +12,31 @@ const ResultText = document.getElementById('results');
 
 // THIS CODE MAY CHANGE TO UTILIZE A WORDLIST / GENERATOR TO ACCOMODATE FOR PROMISE SECTION OF RUBRIC
 let options = {
-    CarBrand: [
-        "Toyota",
-        "Honda",
-        "Hyundai",
-        "Ford",
-        "Chevrolet",
-        "Jeep",
-        "Dodge",
+    car_brand: [
+        "TOYOTA",
+        "HONDA",
+        "FORD",
+        "CHEVROLET",
+        "JEEP",
+        "DODGE",
     ],
 
-    Colors: [
-        "red",
-        "blue",
-        "green",
-        "yellow",
-        "orange",
-        "purple"
+    animals: [
+      "DOG",
+      "CAT",
+      "GIRAFFE",
+      "ZEBRA",
+      "ELEPHANT",
+      "MONKEY",
+    ],
+
+    colors: [
+        "RED",
+        "BLUE",
+        "GREEN",
+        "YELLOW",
+        "ORANGE",
+        "PURPLE"
     ],
 };
 
@@ -37,56 +45,48 @@ let options = {
 let winCounter = 0;
 let count = 0;
 
-let word = ""; // This is the code for the random word that will be generated each game
+let chosenWord = ""; // This is the code for the random word that will be generated each game
 
-// Display Button Options (Letter display)
-
+//Display option buttons
 const displayOptions = () => {
-    OptionsContainer.innerHTML += '<h3>Please Select an Option</h3>';
-    let buttonCon = document.createElement("div");
-
-    for (let value in options) {
-        buttonCon.innterhtml += `<button class="options" onclick="generateWord('${value}')">${value}</button>`;
-    }
-
-    OptionsContainer.appendChild(buttonCon);
+  OptionsContainer.innerHTML += `<h3>Please Select An Option</h3>`;
+  let buttonCon = document.createElement("div");
+  for (let value in options) {
+    buttonCon.innerHTML += `<button class="options" onclick="generateWord('${value}')">${value}</button>`;
+  }
+  OptionsContainer.appendChild(buttonCon);
 };
 
-
-// Button Blocker (Once letter is clicked)
-
+//Block all the Buttons
 const blocker = () => {
-    let optionsButtons = document.querySelectorAll(".options");
-    let letterButtons = document.querySelectorAll(".letters");
+  let optionsButtons = document.querySelectorAll(".options");
+  let letterButtons = document.querySelectorAll(".letters");
+  //disable all options
+  optionsButtons.forEach((button) => {
+    button.disabled = true;
+  });
 
-    // Disable Letters
-    letterButtons.forEach((button) => {
-        button.disabled = true;
-    });
-
-    // Disable Options
-    optionsButtons.forEach((button) => {
-        button.disabled = true;
-    });
-
-    newgame.classList.remove("hide")
+  //disable all letters
+  letterButtons.forEach((button) => {
+    button.disabled.true;
+  });
+  NewGame.classList.remove("hide");
 };
 
 // Random Word generator 
 const generateWord = (optionValue) => {
-    let optionsButtons = document.querySelectorAll(".options");
-
-    optionsButtons.forEach((button => {
-        if (button.innerText.toLowerCase() === optionValue) {
-            button.classList.add("active");
-        }
-
-        button.disabled = true;
-    }));
+  let optionsButtons = document.querySelectorAll(".options");
+  //If optionValue matches the button innerText then highlight the button
+  optionsButtons.forEach((button) => {
+    if (button.innerText.toLowerCase() === optionValue) {
+      button.classList.add("active");
+    }
+    button.disabled = true;
+  });
 
     //Hide Letters
-    letterContainer.classList.remove("hide");
-    userinputsection.innerText = "";
+    WordContainer.classList.remove("hide");
+    UserInput.innerText = "";
 
     let optionArray = options[optionValue];
 
@@ -98,22 +98,24 @@ const generateWord = (optionValue) => {
     let displayItem = chosenWord.replace(/./g, '<span class="dashes">_</span>');
 
     //Display each element as a span
-    upsetinputsection.innerHTML = displayItem;
+    UserInput.innerHTML = displayItem;
 };
 
 //Initial Function (Called when page loads/user presses new game)
 const initializer = () => {
-    winCount = 0;
+    winCounter = 0;
     count = 0;
   
-    //Initially erase all content and hide letteres and new game button
-    userinputsection.innerHTML = "";
-    optionscontainer.innerHTML = "";
-    letterContainer.classList.add("hide");
-    newgame.classList.add("hide");
-    lettercontainer.innerHTML = "";
 
-    //For creating letter buttons
+    //Initially erase all content and hide letteres and new game button
+    UserInput.innerHTML = "";
+    OptionsContainer.innerHTML = "";
+    WordContainer.classList.add("hide");
+    NewGame.classList.add("hide");
+    WordContainer.innerHTML = "";
+
+
+    //For creating letter buttons    
   for (let i = 65; i < 91; i++) {
     let button = document.createElement("button");
     button.classList.add("letters");
@@ -131,10 +133,10 @@ const initializer = () => {
             //replace dash with letter
             dashes[index].innerText = char;
             //increment counter
-            winCount += 1;
+            winCounter += 1;
             //if winCount equals word lenfth
-            if (winCount == charArray.length) {
-              resultText.innerHTML = `<h2 class='win-msg'>You Win!!</h2><p>The word was <span>${chosenWord}</span></p>`;
+            if (winCounter == charArray.length) {
+              ResultText.innerHTML = `<h2 class='win-msg'>You Win!!</h2><p>The word was <span>${chosenWord}</span></p>`;
               //block all buttons
               blocker();
             }
@@ -147,14 +149,14 @@ const initializer = () => {
         drawMan(count);
         //Count==6 because head,body,left arm, right arm,left leg,right leg
         if (count == 6) {
-            resultText.innerHTML = `<h2 class='lose-msg'>You Lose!!</h2><p>The word was <span>${chosenWord}</span></p>`;
+            ResultText.innerHTML = `<h2 class='lose-msg'>You Lose!!</h2><p>The word was <span>${chosenWord}</span></p>`;
             blocker();
           }
         }
         //disable clicked button
         button.disabled = true;
       });
-      letterContainer.append(button);
+      WordContainer.append(button);
     }
   
     displayOptions();
@@ -164,8 +166,9 @@ const initializer = () => {
     initialDrawing();
 };
 
-// CANVAS 
 
+
+// CANVAS 
 const canvasCreator = () => {
     let context = canvas.getContext("2d");
     context.beginPath();
@@ -189,18 +192,27 @@ const drawLine = (fromX, fromY, toX, toY) => {
         context.stroke();
     };
 
+    //BODY
+    const body = () => {
+      drawLine(70, 40, 70, 80);
+    };
+
+    //LEFT ARM
     const leftArm = () => {
         drawLine(70, 50, 50, 70); 
     };
 
+    // RIGHT ARM
     const rightArm = () => {
         drawLine(70, 50, 90, 70); 
     };
 
+    //LEFT LEG
     const leftLeg = () => {
         drawLine(70, 80, 50, 110); 
     };
 
+    // RIGHT LEG
     const rightLeg = () => {
         drawLine(70, 40, 70, 80); 
     };
@@ -251,5 +263,5 @@ const drawMan = (count) => {
 };
 
 //New Game
-newGameButton.addEventListener("click", initializer);
+GameButton.addEventListener("click", initializer);
 window.onload = initializer;

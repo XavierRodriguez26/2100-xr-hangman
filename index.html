@@ -4,25 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hangman Game</title>
-    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="style.css"> 
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
 </head>
 
 <body>
     <div class="container">
-       <div id="optionscontainer">
+       <div id="options-container">
             <!-- This container will hold the "options" aka the wordlist for the game -->
        </div>
-       <div id="lettercontainer" class="letter-container hide">
+       <div id="letter-container" class="letter-container hide">
             <!-- Container that will hold an array of all the letters in the alphabet -->
         </div>
-        <div id="userinputsection">
+        <div id="user-input-section">
             <!-- This container will hold the code for the user input portion of the game-->
        </div>
        <canvas id="canvas"></canvas> <!-- HTML element to coincide wit JS to draw elements, this container is only for images-->
 
-       <div id="newgame" class="newgame hide">  <!-- This div is creating the option to start a new game -->
+       <div id="new-game-container" class="new-game-popup hide">  <!-- This div is creating the option to start a new game -->
             <div id="results"></div>
-            <button id="newgamebutton">New Game</button>
+            <button id="new-game-button">New Game</button>
        </div>
     </div>
     
